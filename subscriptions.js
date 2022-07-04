@@ -14,8 +14,6 @@ export const onCreateResentment = /* GraphQL */ `
       text_content
       createdDate
       article_id
-      article_owner_id
-      ByPoemID
       createdAt
       updatedAt
       owner
@@ -35,8 +33,6 @@ export const onUpdateResentment = /* GraphQL */ `
       text_content
       createdDate
       article_id
-      article_owner_id
-      ByPoemID
       createdAt
       updatedAt
       owner
@@ -56,8 +52,6 @@ export const onDeleteResentment = /* GraphQL */ `
       text_content
       createdDate
       article_id
-      article_owner_id
-      ByPoemID
       createdAt
       updatedAt
       owner
@@ -79,7 +73,19 @@ export const onCreatePoem = /* GraphQL */ `
       read_count
       createdDate
       owner
-      ByOwnerID
+      resentments {
+        items {
+          id
+          commentator
+          text_content
+          createdDate
+          article_id
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       author
@@ -101,7 +107,19 @@ export const onUpdatePoem = /* GraphQL */ `
       read_count
       createdDate
       owner
-      ByOwnerID
+      resentments {
+        items {
+          id
+          commentator
+          text_content
+          createdDate
+          article_id
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       author
@@ -123,7 +141,19 @@ export const onDeletePoem = /* GraphQL */ `
       read_count
       createdDate
       owner
-      ByOwnerID
+      resentments {
+        items {
+          id
+          commentator
+          text_content
+          createdDate
+          article_id
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       author
@@ -142,6 +172,34 @@ export const onCreateAuthor = /* GraphQL */ `
         bucket
         key
       }
+      poems {
+        items {
+          id
+          title
+          text_content
+          category
+          read_count
+          createdDate
+          owner
+          createdAt
+          updatedAt
+          author
+        }
+        nextToken
+      }
+      resentments {
+        items {
+          id
+          commentator
+          text_content
+          createdDate
+          article_id
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -159,6 +217,34 @@ export const onUpdateAuthor = /* GraphQL */ `
         bucket
         key
       }
+      poems {
+        items {
+          id
+          title
+          text_content
+          category
+          read_count
+          createdDate
+          owner
+          createdAt
+          updatedAt
+          author
+        }
+        nextToken
+      }
+      resentments {
+        items {
+          id
+          commentator
+          text_content
+          createdDate
+          article_id
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -175,6 +261,34 @@ export const onDeleteAuthor = /* GraphQL */ `
         region
         bucket
         key
+      }
+      poems {
+        items {
+          id
+          title
+          text_content
+          category
+          read_count
+          createdDate
+          owner
+          createdAt
+          updatedAt
+          author
+        }
+        nextToken
+      }
+      resentments {
+        items {
+          id
+          commentator
+          text_content
+          createdDate
+          article_id
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
       }
       createdAt
       updatedAt

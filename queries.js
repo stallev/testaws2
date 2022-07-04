@@ -14,8 +14,6 @@ export const getResentment = /* GraphQL */ `
       text_content
       createdDate
       article_id
-      article_owner_id
-      ByPoemID
       createdAt
       updatedAt
       owner
@@ -40,44 +38,6 @@ export const listResentments = /* GraphQL */ `
         text_content
         createdDate
         article_id
-        article_owner_id
-        ByPoemID
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-    }
-  }
-`;
-export const resentmentsByPoemID = /* GraphQL */ `
-  query ResentmentsByPoemID(
-    $ByPoemID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelResentmentFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    resentmentsByPoemID(
-      ByPoemID: $ByPoemID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        commentator
-        photo {
-          region
-          bucket
-          key
-        }
-        text_content
-        createdDate
-        article_id
-        article_owner_id
-        ByPoemID
         createdAt
         updatedAt
         owner
@@ -101,7 +61,19 @@ export const getPoem = /* GraphQL */ `
       read_count
       createdDate
       owner
-      ByOwnerID
+      resentments {
+        items {
+          id
+          commentator
+          text_content
+          createdDate
+          article_id
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       author
@@ -128,44 +100,9 @@ export const listPoems = /* GraphQL */ `
         read_count
         createdDate
         owner
-        ByOwnerID
-        createdAt
-        updatedAt
-        author
-      }
-      nextToken
-    }
-  }
-`;
-export const postsByOwner = /* GraphQL */ `
-  query PostsByOwner(
-    $ByOwnerID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelPoemFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    postsByOwner(
-      ByOwnerID: $ByOwnerID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        title
-        text_content
-        photo {
-          region
-          bucket
-          key
+        resentments {
+          nextToken
         }
-        category
-        read_count
-        createdDate
-        owner
-        ByOwnerID
         createdAt
         updatedAt
         author
@@ -185,6 +122,34 @@ export const getAuthor = /* GraphQL */ `
         region
         bucket
         key
+      }
+      poems {
+        items {
+          id
+          title
+          text_content
+          category
+          read_count
+          createdDate
+          owner
+          createdAt
+          updatedAt
+          author
+        }
+        nextToken
+      }
+      resentments {
+        items {
+          id
+          commentator
+          text_content
+          createdDate
+          article_id
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -207,6 +172,12 @@ export const listAuthors = /* GraphQL */ `
           region
           bucket
           key
+        }
+        poems {
+          nextToken
+        }
+        resentments {
+          nextToken
         }
         createdAt
         updatedAt

@@ -13,13 +13,11 @@ type Resentment
   )
   {
     id: ID!
-    commentator: String!
+    commentator: ID! @index(name: "byAuthor", sortKeyFields: ["text_content"])
     photo: S3Object
     text_content: String!
     createdDate: AWSDateTime!
-    article_id: String!
-    article_owner_id: String!
-    ByPoemID: ID! @index(name: "byPoem", sortKeyFields: ["article_owner_id"])
+    article_id: ID! @index(name: "byPoem", sortKeyFields: ["text_content"])
   }
 
 type Poem 
