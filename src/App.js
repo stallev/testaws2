@@ -1,21 +1,19 @@
-import { Amplify } from 'aws-amplify';
+import { Routes, Route } from 'react-router-dom';
+import { RoutePath } from './common/constants/RoutePath';
+import { Landing, Contacts, NotFoundPage } from './pages';
+import { Layout } from './common/components';
 
-import { Authenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
-
-import awsExports from './aws-exports';
-Amplify.configure(awsExports);
+import '../src/common/styles/global.scss';
 
 function App() {
   return (
-    <Authenticator>
-      {({ signOut, user }) => (
-        <main>
-          <h1>Hello {user.username}</h1>
-          <button onClick={signOut}>Sign out</button>
-        </main>
-      )}
-    </Authenticator>
+    <Routes>
+      <Route path={RoutePath.Landing} element={<Layout />}>
+        <Route index element={<Landing />} />
+        <Route path={RoutePath.Contacts} element={<Contacts />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 }
 
