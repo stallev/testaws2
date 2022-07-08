@@ -7,6 +7,8 @@ import '@aws-amplify/ui-react/styles.css';
 
 // import awsExports from './aws-exports';
 import awsExports from '../../aws-exports';
+import { Container } from '../../common/components';
+
 Amplify.configure(awsExports);
 
 

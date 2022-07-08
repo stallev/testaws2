@@ -21,8 +21,13 @@ const Header = () => {
               className={styles['header__nav-link']}
             />
             <CustomNavLink
-              label="Works"
-              to={RoutePath.WorksList}
+              label="New Poem"
+              to={RoutePath.NewPoem}
+              className={styles['header__nav-link']}
+            />
+            <CustomNavLink
+              label="Profile"
+              to={RoutePath.Profile}
               className={styles['header__nav-link']}
             />
             <CustomNavLink

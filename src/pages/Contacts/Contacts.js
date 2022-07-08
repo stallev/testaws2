@@ -1,9 +1,12 @@
 import React from 'react';
+import { Container } from '../../common/components';
 
 const Contacts = () => {
   return (
     <div>
-      Contacts
+      <Container>
+        <p>Contacts</p>
+      </Container>      
     </div>
   );
 };

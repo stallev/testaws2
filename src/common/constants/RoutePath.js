@@ -1,7 +1,8 @@
 export const RoutePath = {
   Landing: '/',
-  WorksList: 'works-list',
-  Work: 'work',
+  NewPoem: 'new-poem',
+  Poem: 'poem',
+  Profile: 'profile',
   Contacts: 'contacts'
 };
 

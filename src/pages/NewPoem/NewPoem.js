@@ -1,14 +1,16 @@
 import React from 'react';
 import { Container } from '../../common/components';
 
-const NotFoundPage = () => {
+import styles from './styles/_new-poem.module.scss';
+
+const NewPoem = () => {
   return (
     <div>
       <Container>
-        <p>NotFoundPage</p>
+        <p>NewPoem</p>
       </Container>      
     </div>
   );
 };
 
-export default NotFoundPage;
+export default NewPoem;
